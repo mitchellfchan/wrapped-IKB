@@ -4,18 +4,13 @@ Table table;
 int edition;
 String imageHash;
 int series = 0;
+
 void setup() {
-
-
-
-
 
   table = loadTable("source/imageHashes.csv");
   println(table.getRowCount());
   println(table.getInt(0, 0));
   println(table.getString(0, 1));
-
-
 
 
   for (TableRow row : table.rows()) {
@@ -35,7 +30,7 @@ void setup() {
 
 
 
-    //Set Generaic attributes
+    //Set Generic attributes
 
     String name = "Digital Zone of Immaterial Pictorial Sensibility, Series " + str(series) + ", Edition " + str(edition) + ". (Wrapped)";
 

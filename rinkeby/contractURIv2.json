@@ -1,8 +1,0 @@
-{
-  "name": "Test Wrapped IKB v2",
-  "description": "This is a test to see what works. Does it?",
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/IKB_191.jpg/1024px-IKB_191.jpg",
-  "external_link": "https://en.wikipedia.org/wiki/International_Klein_Blue",
-  "seller_fee_basis_points": 100,
-  "fee_recipient": "0xe86F3F21487d15727219f5b661D4623cb031E97E"
-}
