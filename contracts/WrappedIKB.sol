@@ -112,7 +112,7 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
 "QmZfqzCxJrJjePqsKSWX1BwN2owp2SqisSMgW4z8Ab1xUm",
 "QmcriD2wZAwgphUbaX1tBk8J6swG41pRJt3Kj4kdJ6r6or"];
 
-  string private _baseURI = "https://IPFS.io/IPFS/";
+  string private _baseURI = "https://ipfs.io/ipfs/";
 
   string private constant _contractURI = "https://ipfs.io/ipfs/QmXgAWQ3mUexm4Jctfc5x7S6rbCaueEaZnxKsegemUjfac";
 
