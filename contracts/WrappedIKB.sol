@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.7.6;
-pragma abicoder v2;
+pragma solidity 0.5.17;
+pragma experimental ABIEncoderV2;
 
-import "./ERC721.sol";
+import "./ERC721Full.sol";
 import "./IKlein.sol";
 import "./ProxyRegistry.sol";
 
-contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
+contract WrappedIKB is ERC721Full, Ownable {
 
   mapping (uint256 => string) private _tokenURIs;
 
@@ -16,12 +16,12 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
 
   string private constant _contractURI = "https://ipfs.io/ipfs/QmXgAWQ3mUexm4Jctfc5x7S6rbCaueEaZnxKsegemUjfac";
 
-  IKlein public immutable Klein;
+  IKlein public Klein;
 
   address public proxyRegistryAddress;
 
   constructor(address _IKBAddress, address _proxyRegistryAddress)
-    ERC721("WrappedIKB", "wIKB")
+    ERC721Full("WrappedIKB", "wIKB")
     Ownable()
     public
   {
@@ -33,7 +33,7 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
    * Opensea-specific methods
    *************************************************************************/
 
-  function contractURI() external view returns (string memory) {
+  function contractURI() external pure returns (string memory) {
       return _contractURI;
   }
 
@@ -42,7 +42,6 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
    */
   function isApprovedForAll(address owner, address operator)
     public
-    override
     view
     returns (bool)
   {
@@ -64,7 +63,7 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
   * automatically added as a prefix in {tokenURI} to each token's URI, or
   * to the token ID if no specific URI is set for that token ID.
   */
-  function baseURI() public view override returns (string memory) {
+  function baseURI() public view returns (string memory) {
       return _baseURI;
   }
 
@@ -75,7 +74,7 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
     _setBaseURI(baseURI_);
   }
 
-  function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal override {
+  function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal  {
       _tokenURIs[tokenId] = _tokenURI;
   }
 
@@ -84,7 +83,7 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
     onlyOwner
     returns (bool)
   {
-    require(bytes(_tokenURIs[tokenId]).length == 0, 'WrappedIKB: tokenUri has already been set'); 
+    require(bytes(_tokenURIs[tokenId]).length == 0, 'WrappedIKB: tokenUri has already been set');
 
     _setTokenURI(tokenId, tokenURI);
 
@@ -114,14 +113,8 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
     return _tokenURIs[tokenId];
   }
 
- 
- 
 
-  /**
-   * @dev Modifies Open Zeppelin's `tokenURI()` to read from `_tokenIPFSHashes`
-   * instead of `_tokenUris`
-   */
-  function tokenURI(uint256 tokenId) public view override returns (string memory) {
+  function tokenURI(uint256 tokenId) public view returns (string memory) {
       require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
 
       string memory _tokenURI = _tokenURIs[tokenId];
@@ -189,7 +182,7 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
   function unwrapSpecific(uint tokenId) public{
     require(ownerOf(tokenId) == _msgSender(), "WrappedIKB: Token not owned by sender");
     require(Klein.specificTransfer(_msgSender(), tokenId), "WrappedIKB: Token transfer failed");
-    burn(tokenId);
+    _burn(tokenId);
   }
 
   /**
@@ -209,7 +202,5 @@ contract WrappedIKB is ERC721, ERC721Burnable, Ownable {
       unwrapSpecific(tokenIds[i]);
     }
   }
-
-
 
 }
