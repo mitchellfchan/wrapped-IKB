@@ -9,10 +9,8 @@ import "./ProxyRegistry.sol";
 
 contract WrappedIKB is ERC721Full, Ownable {
 
-  mapping (uint256 => string) private _tokenURIs;
-
-
-  string private _baseURI = "https://ipfs.io/ipfs/";
+  // `baseURI` is an IPFS folder with a trailing slash
+  string private _baseURI = "https://ipfs.io/ipfs/XXXX/";
 
   string private constant _contractURI = "https://ipfs.io/ipfs/QmXgAWQ3mUexm4Jctfc5x7S6rbCaueEaZnxKsegemUjfac";
 
@@ -74,53 +72,14 @@ contract WrappedIKB is ERC721Full, Ownable {
     _setBaseURI(baseURI_);
   }
 
-  function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal  {
-      _tokenURIs[tokenId] = _tokenURI;
-  }
-
-  function setTokenUri(uint256 tokenId, string memory tokenURI)
-    public
-    onlyOwner
-    returns (bool)
-  {
-    require(bytes(_tokenURIs[tokenId]).length == 0, 'WrappedIKB: tokenUri has already been set');
-
-    _setTokenURI(tokenId, tokenURI);
-
-    return true;
-  }
-
-  function setTokenURIs(uint[] memory tokenIds, string[] memory tokenURIs)
-    public
-    onlyOwner
-    returns (bool)
-  {
-    require(tokenIds.length == tokenURIs.length, 'WrappedIKB: tokenIds and tokenURIs must be the same length');
-
-    for (uint256 i; i < tokenIds.length; i++){
-      setTokenUri(tokenIds[i], tokenURIs[i]);
-    }
-
-    return true;
-  }
-
- /**
-   * @dev `tokenURIs` is private but it's helpful for owner to check the
-   * `tokenURI` of a `tokenId` when `tokenId` is not minted yet by its owner.
+  /**
+    * @dev `baseURI` is a folder with a trailing slash.
+    * The JSON metadata for `tokenId` can be found at `baseURI` + `tokenId` + .json
   */
-
-  function revealTokenUri(uint256 tokenId) public view onlyOwner returns(string memory tokenUri){
-    return _tokenURIs[tokenId];
-  }
-
-
   function tokenURI(uint256 tokenId) public view returns (string memory) {
-      require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+    require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
 
-      string memory _tokenURI = _tokenURIs[tokenId];
-      string memory base = baseURI();
-
-      return string(abi.encodePacked(base, _tokenURI));
+    return string(abi.encodePacked(baseURI(), uint2str(tokenId), '.json'));
   }
 
 
@@ -201,6 +160,30 @@ contract WrappedIKB is ERC721Full, Ownable {
     for (uint256 i = 0; i < balance; i++){
       unwrapSpecific(tokenIds[i]);
     }
+  }
+
+  /**************************************************************************
+   * Utility methods
+   *************************************************************************/
+
+  // via https://github.com/ProjectOpenSea/opensea-creatures/blob/master/contracts/Strings.sol
+  function uint2str(uint _i) internal pure returns (string memory _uintAsString) {
+      if (_i == 0) {
+          return "0";
+      }
+      uint j = _i;
+      uint len;
+      while (j != 0) {
+          len++;
+          j /= 10;
+      }
+      bytes memory bstr = new bytes(len);
+      uint k = len - 1;
+      while (_i != 0) {
+          bstr[k--] = byte(uint8(48 + _i % 10));
+          _i /= 10;
+      }
+      return string(bstr);
   }
 
 }
