@@ -1,0 +1,44 @@
+{
+  "image": "https://ipfs.io/ipfs/QmSbtoZaWNnJzjraYGKE7U7C8kwB8rsJNtMFyz8Ge9Etzm",
+  "createdBy": "Digital Zone of Immaterial Pictorial Sensibility, Series 6, Edition 85. (Wrapped)",
+  "yearCreated": "2017",
+  "name": "Digital Zone of Immaterial Pictorial Sensibility, Series 6, Edition 85. (Wrapped)",
+  "description": "Transferable wrapper for a single IKB token.",
+  "attributes": [
+    {
+      "display_type": "string",
+      "value": "Mitchell F. Chan",
+      "trait_type": "Artist"
+    },
+    {
+      "display_type": "string",
+      "value": "QmcdKPjcJgYX2k7weqZLoKjHqB9tWxEV5oKBcPV6L8b5dD",
+      "trait_type": "Essay (IPFS)"
+    },
+    {
+      "display_type": "string",
+      "value": "QmSn2dz5uxG9kUDUPPApfxDyqZWS5WBophWHSzYv8TfYZa",
+      "trait_type": "Collector Information (IPFS)"
+    },
+    {
+      "display_type": "date",
+      "value": 1504139939,
+      "trait_type": "First Exhibited"
+    },
+    {
+      "display_type": "number",
+      "value": 85,
+      "trait_type": "Edition"
+    },
+    {
+      "display_type": "number",
+      "value": 6,
+      "trait_type": "Series"
+    }
+  ],
+  "media": {
+    "mimeType": "image/png",
+    "uri": "https://ipfs.io/ipfs/QmSbtoZaWNnJzjraYGKE7U7C8kwB8rsJNtMFyz8Ge9Etzm",
+    "dimensions": "3840x3840"
+  }
+}
