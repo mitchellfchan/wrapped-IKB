@@ -55,19 +55,19 @@ void setup() {
     // Set all OpenSea attributes  
     JSONArray attributes = new JSONArray();  
       JSONObject object0 = new JSONObject();
-      object0.setString("display_type", "string");
+      //object0.setString("display_type", "string");
       object0.setString("trait_type", "Artist");
       object0.setString("value", "Mitchell F. Chan");
       attributes.setJSONObject(0, object0);
       
       JSONObject object1 = new JSONObject();
-      object1.setString("display_type", "string");
+      //object1.setString("display_type", "string");
       object1.setString("trait_type", "Essay (IPFS)");
       object1.setString("value", "QmcdKPjcJgYX2k7weqZLoKjHqB9tWxEV5oKBcPV6L8b5dD");
       attributes.setJSONObject(1, object1);
       
       JSONObject object2 = new JSONObject();
-      object2.setString("display_type", "string");
+      //object2.setString("display_type", "string");
       object2.setString("trait_type", "Collector Information (IPFS)");
       object2.setString("value", "QmSn2dz5uxG9kUDUPPApfxDyqZWS5WBophWHSzYv8TfYZa");
       attributes.setJSONObject(2, object2);
@@ -96,7 +96,7 @@ void setup() {
 
 
     //set all superRare attributes
-    masterJson.setString("createdBy", name);
+    masterJson.setString("createdBy", "Mitchell F. Chan");
     masterJson.setString("yearCreated", "2017");
 
     JSONObject superRareMedia = new JSONObject();
