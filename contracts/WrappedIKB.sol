@@ -19,7 +19,7 @@ contract WrappedIKB is ERC721Full, Ownable {
   address public proxyRegistryAddress;
 
   constructor(address _IKBAddress, address _proxyRegistryAddress)
-    ERC721Full("WrappedIKB", "wIKB")
+    ERC721Full("IKB Cachet de Garantie", "wIKB")
     Ownable()
     public
   {
