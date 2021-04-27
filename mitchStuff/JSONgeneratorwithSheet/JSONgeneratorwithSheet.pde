@@ -45,7 +45,7 @@ void setup() {
 
     masterJson.setString("image", image);
 
-    String description = "Transferable wrapper for a single IKB token.";
+    String description = "Transferable wrapper and receipt for a single IKB token.";
     masterJson.setString("description", description);
 
     String externalURL = "https://chan.gallery";
@@ -69,7 +69,7 @@ void setup() {
       JSONObject object2 = new JSONObject();
       //object2.setString("display_type", "string");
       object2.setString("trait_type", "Collector Information (IPFS)");
-      object2.setString("value", "QmSn2dz5uxG9kUDUPPApfxDyqZWS5WBophWHSzYv8TfYZa");
+      object2.setString("value", "QmYQ8VDf4rm6949p4J2nDH7PTV1FZNHBZ3zdnLsLDZnSuW");
       attributes.setJSONObject(2, object2);
       
      JSONObject object3 = new JSONObject();
