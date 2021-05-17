@@ -10,7 +10,7 @@ import "./ProxyRegistry.sol";
 contract WrappedIKB is ERC721Full, Ownable {
 
   // `baseURI` is an IPFS folder with a trailing slash
-  string private _baseURI = "https://ipfs.io/ipfs/QmbqC1K6kf1Ju1s8j6HhAGotNbVLr43VteZjxpMvs1yKH8/";
+  string private _baseURI = "https://ipfs.io/ipfs/QmQ5yApMr1thk5gkFakFeJpSvKBPKbTAfkVG9FHpo2zuSY/";
 
   string private constant _contractURI = "https://ipfs.io/ipfs/Qmf2pwtBCsnWaFrtKq1RG3fod4iH66vfeoQdJifmmLm9TN";
 
@@ -65,6 +65,10 @@ contract WrappedIKB is ERC721Full, Ownable {
       return _baseURI;
   }
 
+  function setbaseURI(string memory baseURI_) public onlyOwner {
+    _setBaseURI(baseURI_);
+  }
+
 
   /**
     * @dev `baseURI` is a folder with a trailing slash.
@@ -92,7 +96,7 @@ contract WrappedIKB is ERC721Full, Ownable {
    *   To do this, call `approve()` with the address of WrappedIKB and the current
    *   balance of the owner
   */
-  function wrapAll() public returns (bool){
+  function mint() public returns (bool){
     uint256[] memory ownedRecords = Klein.getHolderEditions(_msgSender());
     uint ownedRecordsLength = ownedRecords.length;
 
@@ -119,7 +123,7 @@ contract WrappedIKB is ERC721Full, Ownable {
    *   The transfer will fail on the IKB contract `specificApprove()` is not called
    *   with the correct edition.
   */
-  function wrapSpecific(uint edition) public {
+  function mint(uint edition) public {
     require(Klein.specificTransferFrom(_msgSender(), address(this), edition), "WrappedIKB: IKB Token did not specificTransferFrom");
     _safeMint(_msgSender(), edition);
   }
