@@ -10,7 +10,7 @@ import "./ProxyRegistry.sol";
 contract WrappedIKB is ERC721Full, Ownable {
 
   // `baseURI` is an IPFS folder with a trailing slash
-  string private _baseURI = "https://ipfs.io/ipfs/QmQ5yApMr1thk5gkFakFeJpSvKBPKbTAfkVG9FHpo2zuSY/";
+  string private _baseURI;
 
   string private constant _contractURI = "https://ipfs.io/ipfs/Qmf2pwtBCsnWaFrtKq1RG3fod4iH66vfeoQdJifmmLm9TN";
 
@@ -25,6 +25,7 @@ contract WrappedIKB is ERC721Full, Ownable {
   {
     Klein = IKlein(_IKBAddress);
     proxyRegistryAddress = _proxyRegistryAddress;
+    _baseURI = "https://ipfs.io/ipfs/QmQ5yApMr1thk5gkFakFeJpSvKBPKbTAfkVG9FHpo2zuSY/";
   }
 
   /**************************************************************************
