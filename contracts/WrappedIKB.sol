@@ -25,7 +25,7 @@ contract WrappedIKB is ERC721Full, Ownable {
   {
     Klein = IKlein(_IKBAddress);
     proxyRegistryAddress = _proxyRegistryAddress;
-    _baseURI = "https://ipfs.io/ipfs/QmQ5yApMr1thk5gkFakFeJpSvKBPKbTAfkVG9FHpo2zuSY/";
+    
   }
 
   /**************************************************************************
