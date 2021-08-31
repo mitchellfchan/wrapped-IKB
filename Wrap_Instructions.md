@@ -48,6 +48,6 @@ The IKB Cachet de Garantie automatically shows up on other trading and NFT galle
 
 2. Under the "Write Contract" tab, `5. SafeTransferFrom` and just send the token to yourself. Be sure to enter the tokenID you just wrapped.
 
-![push to OpenSea](assets/openseaFix.png) 
+![push to OpenSea](https://chan.gallery/assets/openseaFix.png) 
 
 Your wrapped IKB will appear on Opensea after a short wait. 
