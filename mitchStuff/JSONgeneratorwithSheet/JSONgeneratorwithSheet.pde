@@ -69,7 +69,7 @@ void setup() {
       JSONObject object2 = new JSONObject();
       //object2.setString("display_type", "string");
       object2.setString("trait_type", "Collector Information (IPFS)");
-      object2.setString("value", "QmYQ8VDf4rm6949p4J2nDH7PTV1FZNHBZ3zdnLsLDZnSuW");
+      object2.setString("value", "QmWh4gvtmXkrhA5dG6wKkqe5keNnUUziFq28t3qbsYdGDz");
       attributes.setJSONObject(2, object2);
       
      JSONObject object3 = new JSONObject();
